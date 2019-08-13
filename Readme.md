@@ -1,0 +1,1 @@
+I want to make it easier to set up a new machine or recover from an erase and install. 
