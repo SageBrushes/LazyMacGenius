@@ -22,6 +22,7 @@ brew upgrade --all
 # Install my brew packages
 brew install wget
 brew install mpv
+brew tap buo/cask-upgrade
 
 # Install cask
 brew tap phinze/homebrew-cask
@@ -29,28 +30,27 @@ brew tap phinze/homebrew-cask
 # Install desired cask packages
 brew cask install 1password
 brew cask install alfred
-brew cask install beamer
-brew cask install betterzipql
-brew cask install caffeine
 brew cask install cakebrew
-brew cask install coconutbattery
-brew cask install coteditor
 brew cask install dropbox
-brew cask install flux
-brew cask install forklift
-brew cask install franz
-brew cask install imageoptim
-brew cask install kakapo
-brew cask install little-snitch
-brew cask install marked
 brew cask install mpv
-brew cask install qlimagesize
-brew cask install qlmarkdown
-brew cask install tg-pro
-brew cask install the-unarchiver
-brew cask install transmission
-brew cask install viscosity
-brew cask install xld
+brew cask install google-chrome
+brew cask install coda
+brew cask install adobe-creative-cloud
+brew cask install charles
+brew cask install mamp
+brew cask install lastpass
+brew cask install transmit
+brew cask install virtualbox
+brew cask install vmware-fusion
+brew cask install vnc-viewer
+brew cask install unlox
+brew cask install microsoft-office
+brew cask install handbrake
+brew cask install obs
+brew cask install textexpander
+brew cask install firefox
+brew cask install earthdeskpreferpane
+
 
 # Remove brew cruft
 brew cleanup
