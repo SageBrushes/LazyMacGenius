@@ -1,8 +1,9 @@
 #!/bin/bash
+# To execute: save and `chmod +x ./brew-install-script.sh` then `./brew-install-script.sh`
 
 echo Install Mac App Store apps first.
 
-# Either use mas-cli (https://github.com/argon/mas) or install manually; apps I need: Bear/Simplenote, Tyme, Polarr, Pixelmator, JPEGmini.
+# Either use mas-cli (https://github.com/argon/mas) or install manually;
 read -p "Press any key to continue… " -n1 -s
 echo '\n'
 
@@ -21,11 +22,12 @@ brew upgrade --all
 
 # Install my brew packages
 brew install wget
-brew install mpv
+brew install ffmpeg
+brew install mas
 brew tap buo/cask-upgrade
 
 # Install cask
-brew tap phinze/homebrew-cask
+brew tap caskroom/cask
 
 # Install desired cask packages
 brew cask install 1password
@@ -50,7 +52,17 @@ brew cask install obs
 brew cask install textexpander
 brew cask install firefox
 brew cask install earthdeskpreferpane
-
+brew cask install slack
+brew cask install spotify
+brew cask install openvpn
+brew cask install discord
+brew cask install github
+brew cask install handbrake
+brew cask install mediinfo
+brew cask install omnioutliner
+brew cask install ringcentral
+brew cask install ringcentral-meetings
+brew cask install zoomus
 
 # Remove brew cruft
 brew cleanup
