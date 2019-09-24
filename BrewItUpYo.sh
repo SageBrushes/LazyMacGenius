@@ -24,6 +24,9 @@ brew upgrade --all
 brew install wget
 brew install ffmpeg
 brew install mas
+brew install htop
+brew install youtube-dl
+brew install imagemagisk
 brew tap buo/cask-upgrade
 
 # Install cask
@@ -45,6 +48,7 @@ brew cask install transmit
 brew cask install virtualbox
 brew cask install vmware-fusion
 brew cask install vnc-viewer
+brew cask install betterzip
 brew cask install unlox
 brew cask install microsoft-office
 brew cask install handbrake
