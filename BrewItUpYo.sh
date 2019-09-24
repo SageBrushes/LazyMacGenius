@@ -1,5 +1,5 @@
 #!/bin/bash
-# To execute: save and `chmod +x ./brew-install-script.sh` then `./brew-install-script.sh`
+# To execute: save and `chmod +x ./BrewItUpYo.sh` then `./BrewItUpYo.sh.sh`
 
 echo Install Mac App Store apps first.
 
