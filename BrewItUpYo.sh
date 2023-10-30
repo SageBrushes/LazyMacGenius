@@ -1,78 +1,49 @@
-#!/bin/bash
-# To execute: save and `chmod +x ./BrewItUpYo.sh` then `./BrewItUpYo.sh.sh`
+#!/bin/zsh
 
-echo Install Mac App Store apps first.
+# Prompt for the user's admin password upfront
+echo "Please enter your admin password for installation purposes:"
+sudo -v
 
-# Either use mas-cli (https://github.com/argon/mas) or install manually;
-read -p "Press any key to continue… " -n1 -s
-echo '\n'
+# Keep-alive: update existing `sudo` time stamp until the script finishes
+while true; do sudo --validate; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Check that Homebrew is installed and install if not
-if test ! $(which brew)
+if ! command -v brew &>/dev/null
 then
   echo "  Installing Homebrew for you."
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" > /tmp/homebrew-install.log
+  /bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 # Update any existing homebrew recipes
 brew update
 
 # Upgrade any already installed formulae
-brew upgrade --all
+brew upgrade
 
-# Install my brew packages
-brew install wget
-brew install ffmpeg
+# Install mas (Mac App Store command-line tool)
 brew install mas
-brew install htop
-brew install youtube-dl
-brew install imagemagisk
-brew tap buo/cask-upgrade
 
-# Install cask
-brew tap caskroom/cask
+echo "Start by installing Mac App Store apps."
+
+# List of Mac App Store apps to install using mas. Uncomment and replace with your desired apps:
+# mas_apps=(803453959 1333542190)
+
+# Uncomment the below line and modify with your desired app identifiers
+# mas install "${mas_apps[@]}"
+
+echo "Finished installing Mac App Store apps. Continuing with other installations..."
+
+# Install brew packages
+brew install wget ffmpeg htop youtube-dl imagemagick
 
 # Install desired cask packages
-brew cask install 1password
-brew cask install alfred
-brew cask install cakebrew
-brew cask install dropbox
-brew cask install mpv
-brew cask install google-chrome
-brew cask install coda
-brew cask install adobe-creative-cloud
-brew cask install charles
-brew cask install mamp
-brew cask install lastpass
-brew cask install transmit
-brew cask install virtualbox
-brew cask install vmware-fusion
-brew cask install vnc-viewer
-brew cask install betterzip
-brew cask install unlox
-brew cask install microsoft-office
-brew cask install handbrake
-brew cask install obs
-brew cask install textexpander
-brew cask install firefox
-brew cask install earthdeskpreferpane
-brew cask install slack
-brew cask install spotify
-brew cask install openvpn
-brew cask install discord
-brew cask install github
-brew cask install handbrake
-brew cask install mediinfo
-brew cask install omnioutliner
-brew cask install ringcentral
-brew cask install ringcentral-meetings
-brew cask install zoomus
+brew install --cask 1password alfred cakebrew dropbox mpv google-chrome coda adobe-creative-cloud charles mamp lastpass transmit virtualbox vmware-fusion vnc-viewer betterzip unlox microsoft-office handbrake obs textexpander firefox slack spotify openvpn discord github handbrake mediainfo omnioutliner ringcentral ringcentral-meetings zoom
 
 # Remove brew cruft
 brew cleanup
 
-# Remove cask cruft
-brew cask cleanup
-
-# Link alfred to apps
-brew cask alfred link
+# Link Alfred to apps (if Alfred and the apps are installed)
+if command -v alfred &>/dev/null && command -v brew &>/dev/null
+then
+  brew alfred link
+fi
